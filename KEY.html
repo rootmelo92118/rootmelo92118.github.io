@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Let's test the key ~~~</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>This website is a tool to test your google API key is valid or not.</h3>
+    <p>Google API Key : <input type="text" id="APIKey"></p>
+    <button onclick="getAPIKey()">Test your API key</button>
+    <div id="map"></div>
+    <p>Design by <a href="https://github.com/rootmelo92118">Kitayama Shouko</a></p>
+    <script>
+      function initMap() {
+        var location = {lat: 25.0846814, lng: 121.5455938};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: location
+        });
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+    </script>
+    <script>
+        function getAPIKey() {
+          var key = document.getElementById("APIKey").value;
+          var element = document.createElement("script");
+          element.setAttribute("async","");
+          element.setAttribute("defer","");
+          element.setAttribute("src","https://maps.googleapis.com/maps/api/js?key=" + key + "&callback=initMap");
+          document.body.appendChild(element);
+        }
+    </script>
+  </body>
+</html>
